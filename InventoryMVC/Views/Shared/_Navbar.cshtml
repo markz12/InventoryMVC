@@ -1,0 +1,78 @@
+﻿@using System.Security.Claims
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="#">BGZ STORE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+
+            @{
+
+                if (Session["username"] == null)
+                {
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Dashboard
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            @{
+                                if (User.Ge)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Brands</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Category</a>
+                                    </li>
+                                }
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Reports</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Add</a>
+                                    <a class="dropdown-item" href="#">Sales</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">My products</a>
+                                </div>
+                            </li>
+                        </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user-circle-o mr-2"></i>Hi! Mark</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#"><i class="fa fa-info-circle mr-2"></i> Account</a>
+                                <a class="dropdown-item" href="#"><i class="fa fa-cog mr-2"></i> Settings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fa fa-sign-out"></i>
+                                Sign-out    
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-sign-in mr-2"></i>
+                                Sign-in
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                    </ul>
+                }
+            }
+
+
+        </div>
+    </div>
+</nav>
