@@ -4,5 +4,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Login</h2>
-
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-lg-auto mt-5">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h4>Login</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input class="form-control col" type="text" name="username" id="username" value="" placeholder="Enter username" required/>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input class="form-control col" type="password" name="password" id="password" value="" placeholder="Enter password" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success col-12" name="submit" id="btnSubmit"/>
+                        </div>
+                    </form>
+                    <div class="card-footer">
+                        <div class="clearfix">
+                            <a class="btn-link float-sm float-lg-left" href="#">Forgot password?</a>
+                            <a class="btn-link float-sm float-lg-right" href="@Url.Action("Register","Auth")">Create new account?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

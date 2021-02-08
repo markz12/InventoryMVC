@@ -34,6 +34,7 @@ namespace InventoryMVC.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
@@ -41,6 +42,18 @@ namespace InventoryMVC.Controllers
             Session.RemoveAll();
             Session.Abandon();
             return RedirectToAction("Login", "Auth");
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(FormCollection form)
+        {
+            return View();
         }
     }
 }
