@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Brands";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col mx-auto">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h4>Brands</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="card col-lg-4">
+                            <div class="card-header">
+                                <h5>Add Brand</h5>
+                            </div>
+                            <div class="alert alert-dismissible alert-success">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label>Barcode</label>
+                                        <div class="input-group">
+                                            <input class="form-control col" type="text" name="brands" id="brands" value="" placeholder="Enter brands" required />
+                                            <div class="input-group-append">
+                                                <input class="btn btn-success px-lg-2" type="submit" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Brands</h5>
+                                </div>
+                                <div class="card-body">
+                                    <table id="BrandTable" class="table table-hover table-responsive table-bordered">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th scope="col">Select</th>
+                                                <th scope="col">Brand</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Created By</th>
+                                                <th scope="col">Update By</th>
+                                                <th scope="col">Date Created</th>
+                                                <th scope="col">Date Updated</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-light">
+                                                <td>
+                                                    <button class="btn btn-info btn-sm">Select</button>
+                                                </td>
+                                                <td>
+                                                    Nestlie
+                                                </td>
+                                                <td>
+                                                    Active
+                                                </td>
+                                                <td>
+                                                    markVanz
+                                                </td>
+                                                <td>
+                                                    Nestlie
+                                                </td>
+                                                <td>
+                                                    09-10-2021
+                                                </td>
+                                                <td>
+                                                    09-10-2021
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

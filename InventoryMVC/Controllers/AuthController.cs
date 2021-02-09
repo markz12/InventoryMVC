@@ -18,19 +18,6 @@ namespace InventoryMVC.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection form)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    if (ValidateUser(user.Email, user.Password))
-            //    {
-
-            //        FormsAuthentication.SetAuthCookie(user.Email, false);
-            //        return RedirectToAction("Index", "Members");
-            //    }
-            //    else
-            //    {
-            //        ModelState.AddModelError("", "");
-            //    }
-            //}
             return View();
         }
 
@@ -47,6 +34,7 @@ namespace InventoryMVC.Controllers
         [HttpGet]
         public ActionResult Register()
         {
+            TempData["RegisterImage"] = "https://tonsmb.org/wp-content/uploads/2014/03/default-placeholder.png";
             return View();
         }
 

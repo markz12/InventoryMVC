@@ -16,7 +16,7 @@ namespace InventoryMVC
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Auth", action = "Register", id = UrlParameter.Optional }
+                defaults: new { controller = "Products", action = "Brands", id = UrlParameter.Optional }
             );
         }
     }
