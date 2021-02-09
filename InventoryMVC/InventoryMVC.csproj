@@ -122,8 +122,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Class\ApiUrl.cs" />
+    <Compile Include="Class\ProductAction.cs" />
     <Compile Include="Class\Roles.cs" />
-    <Compile Include="Class\ValidateUserAction.cs" />
+    <Compile Include="Class\UserAction.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CustomErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -524,6 +526,8 @@
     <Content Include="Views\Reports\Reports.cshtml" />
     <Content Include="Views\Products\AddProducts.cshtml" />
     <Content Include="Views\Products\Brands.cshtml" />
+    <Content Include="Views\Products\Category.cshtml" />
+    <Content Include="Views\Products\Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

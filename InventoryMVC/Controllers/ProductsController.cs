@@ -33,5 +33,28 @@ namespace InventoryMVC.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Category()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Category(FormCollection form)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Products()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult Products(FormCollection form)
+        {
+            return View();
+        }
     }
 }

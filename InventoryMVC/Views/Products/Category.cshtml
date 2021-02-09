@@ -1,21 +1,20 @@
 ﻿
 @{
-    ViewBag.Title = "Brands";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Category";
 }
 <div class="container mt-5">
     <div class="row">
         <div class="col mx-auto">
             <div class="card shadow">
                 <div class="card-header">
-                    <h4>Brands</h4>
+                    <h4>Category</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-4 mt-2">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>Add Brand</h5>
+                                    <h5>Add Category</h5>
                                 </div>
                                 <div class="alert alert-dismissible alert-success">
                                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -25,7 +24,7 @@
                                     <form>
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input class="form-control col" type="text" name="brands" id="brands" value="" placeholder="Enter brands" required />
+                                                <input class="form-control col" type="text" name="category" id="category" value="" placeholder="Enter category" required />
                                                 <div class="input-group-append">
                                                     <input class="btn btn-success px-lg-2" type="submit" />
                                                 </div>
@@ -38,14 +37,14 @@
                         <div class="col-lg-8 mt-2">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>Brand Details</h5>
+                                    <h5>Category Details</h5>
                                 </div>
                                 <div class="card-body">
                                     <table id="myBrandTable" name="myBrandTable" class="table table-hover table-responsive">
                                         <thead>
-                                            <tr class="text-center" >
+                                            <tr class="text-center">
                                                 <th scope="col" class="px-lg-2">Select</th>
-                                                <th scope="col" class="px-lg-2">Brand</th>
+                                                <th scope="col" class="px-lg-2">Category</th>
                                                 <th scope="col" class="px-lg-2">Status</th>
                                                 <th scope="col" class="px-lg-2">Created By</th>
                                                 <th scope="col" class="px-lg-2">Update By</th>
@@ -88,6 +87,3 @@
         </div>
     </div>
 </div>
-
-
-
