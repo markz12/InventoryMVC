@@ -18,11 +18,18 @@ namespace InventoryMVC.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection form)
         {
+            FormsAuthentication.SetAuthCookie("mark", false);
+            return RedirectToAction("Dashboard","Home");
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Logout()
+        public ActionResult Logout(string loginUrl)
         {
             FormsAuthentication.SignOut();
             Session.Clear();

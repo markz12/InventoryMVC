@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace InventoryMVC.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         [HttpGet]

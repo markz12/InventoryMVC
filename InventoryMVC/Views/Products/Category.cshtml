@@ -40,7 +40,7 @@
                                     <h5>Category Details</h5>
                                 </div>
                                 <div class="card-body">
-                                    <table id="myBrandTable" name="myBrandTable" class="table table-hover table-responsive">
+                                    <table id="myCategoryTable" name="myBrandTable" class="table table-hover table-responsive">
                                         <thead>
                                             <tr class="text-center">
                                                 <th scope="col" class="px-lg-2">Select</th>
@@ -87,3 +87,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#myCategoryTable').DataTable();
+    });
+</script>

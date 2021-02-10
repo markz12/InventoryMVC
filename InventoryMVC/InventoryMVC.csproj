@@ -521,17 +521,21 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
-    <Content Include="Views\CustomError\PageNotFound.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Reports\Reports.cshtml" />
     <Content Include="Views\Products\AddProducts.cshtml" />
     <Content Include="Views\Products\Brands.cshtml" />
     <Content Include="Views\Products\Category.cshtml" />
     <Content Include="Views\Products\Products.cshtml" />
+    <Content Include="Views\CustomError\PageNotFound.cshtml" />
+    <Content Include="Views\CustomError\Unauthorized.cshtml" />
+    <Content Include="Views\CustomError\InternalServerError.cshtml" />
+    <Content Include="Views\Auth\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

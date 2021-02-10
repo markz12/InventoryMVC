@@ -8,6 +8,9 @@ namespace InventoryMVC.Class
 {
     public class UserAction
     {
+        //public string  ValidateUser()
+        //{
 
+        //}
     }
 }
