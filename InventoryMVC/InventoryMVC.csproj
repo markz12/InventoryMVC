@@ -123,6 +123,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Class\ApiUrl.cs" />
+    <Compile Include="Class\DesignClass.cs" />
     <Compile Include="Class\ProductAction.cs" />
     <Compile Include="Class\Roles.cs" />
     <Compile Include="Class\UserAction.cs" />
@@ -134,7 +135,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\IAction.cs" />
+    <Compile Include="Models\ProductDetails.cs" />
+    <Compile Include="Models\ReturnData.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -532,7 +534,6 @@
     <Content Include="Views\CustomError\PageNotFound.cshtml" />
     <Content Include="Views\CustomError\Unauthorized.cshtml" />
     <Content Include="Views\CustomError\InternalServerError.cshtml" />
-    <Content Include="Views\Auth\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

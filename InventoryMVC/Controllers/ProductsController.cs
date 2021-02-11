@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using InventoryMVC.Class;
+using InventoryMVC.Models;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace InventoryMVC.Controllers
 {
     [Authorize]
     public class ProductsController : Controller
     {
+        ProductAction products = new ProductAction();
         [HttpGet]
         public ActionResult AddProducts()
         {
@@ -23,14 +28,21 @@ namespace InventoryMVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Brands()
+        public async Task<ActionResult> Brands()
         {
+            ResponseAPI<brands> response = await products.GetBrands();
+            ViewBag.GetBrandAlert = DesignClass.AlertDesign(response.code);
+            ViewBag.GetBrandMessage = DesignClass.StandardMessage(response.code);
+            ViewData["brands"] = response.data;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Brands(FormCollection form)
+        public async Task<ActionResult> Brands(string brand)
         {
+            ReturnData<int> response = await products.AddBrands(brand,User.Identity.Name);
+            ViewBag.AddBrandAlert = DesignClass.AlertDesign(response.code);
+            ViewBag.AddBrandMessage = DesignClass.StandardMessage(response.code);
             return View();
         }
 

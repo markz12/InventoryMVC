@@ -1,4 +1,4 @@
-﻿
+﻿@using InventoryMVC.Models
 @{
     ViewBag.Title = "Brands";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,15 +17,20 @@
                                 <div class="card-header">
                                     <h5>Add Brand</h5>
                                 </div>
-                                <div class="alert alert-dismissible alert-success">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-                                </div>
+                                @{
+                                    if (ViewBag.AddBrandAlert != null)
+                                    {
+                                        <div class="alert alert-dismissible @ViewBag.AddBrandAlert">
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                            <strong>Message: </strong>  <a href="#" class="alert-link">@ViewBag.AddBrandMessage</a>
+                                        </div>
+                                    }
+                                }
                                 <div class="card-body">
-                                    <form>
+                                    <form method="post" action="@Url.Action("Brands","Products")">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input class="form-control col" type="text" name="brands" id="brands" value="" placeholder="Enter brands" required />
+                                                <input class="form-control col" type="text" name="brand" id="brand" value="" placeholder="Enter brands" required />
                                                 <div class="input-group-append">
                                                     <input class="btn btn-success px-lg-2" type="submit" />
                                                 </div>
@@ -41,9 +46,18 @@
                                     <h5>Brand Details</h5>
                                 </div>
                                 <div class="card-body">
+                                    @{
+                                        if (ViewBag.GetBrandAlert != null)
+                                        {
+                                            <div class="alert alert-dismissible @ViewBag.GetBrandAlert">
+                                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                <strong>Message: </strong>  <a href="#" class="alert-link">@ViewBag.GetBrandMessage</a>.
+                                            </div>
+                                        }
+                                    }
                                     <table id="myBrandTable" name="myBrandTable" class="table table-hover table-responsive">
                                         <thead>
-                                            <tr class="text-center" >
+                                            <tr class="text-center">
                                                 <th scope="col" class="px-lg-2">Select</th>
                                                 <th scope="col" class="px-lg-2">Brand</th>
                                                 <th scope="col" class="px-lg-2">Status</th>
@@ -54,29 +68,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="table-light">
-                                                <td>
-                                                    <button class="btn btn-info btn-sm">Select</button>
-                                                </td>
-                                                <td>
-                                                    Nestlie
-                                                </td>
-                                                <td>
-                                                    Active
-                                                </td>
-                                                <td>
-                                                    markVanz
-                                                </td>
-                                                <td>
-                                                    Nestlie
-                                                </td>
-                                                <td>
-                                                    09-10-2021
-                                                </td>
-                                                <td>
-                                                    09-10-2021
-                                                </td>
-                                            </tr>
+                                            @{
+                                                if (ViewData["brands"] != null)
+                                                {
+                                                    foreach (var item in ViewData["brands"] as IList<brands>)
+                                                    {
+                                                        <tr class="table-light">
+                                                            <td>
+                                                                <button id="@item.brandid" class="btn btn-info btn-sm">Select</button>
+                                                            </td>
+                                                            <td>
+                                                                @item.name
+                                                            </td>
+                                                            <td>
+                                                                @item.status
+                                                            </td>
+                                                            <td>
+                                                                @item.createdby
+                                                            </td>
+                                                            <td>
+                                                                @item.updatedby
+                                                            </td>
+                                                            <td>
+                                                                @item.datecreated
+                                                            </td>
+                                                            <td>
+                                                                @item.dateupdated
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            }
                                         </tbody>
                                     </table>
                                 </div>

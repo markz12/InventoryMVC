@@ -1,4 +1,5 @@
 ﻿@using System.Security.Claims
+@model  InventoryMVC.Models.Users
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="#">BGZ STORE</a>
@@ -20,15 +21,17 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reports</a>
+                            <a class="nav-link" href="#">@User.Identity.IsAuthenticated</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                             <div class="dropdown-menu">
                                 @{
-                                    if (User.Identity.AuthenticationType == "admin")
+                                    FormsIdentity id = (FormsIdentity)User.Identity;
+                                    FormsAuthenticationTicket ticket = id.Ticket;
+                                    if (ticket.UserData.Contains("admin"))
                                     {
-                                        <a class="dropdown-item" href="@Url.Action("Brands","Products")">Add Branch</a>
+                                        <a class="dropdown-item" href="@Url.Action("Brands","Products")">Add Brand</a>
                                         <a class="dropdown-item" href="@Url.Action("Category","Products")">Add Category</a>
                                     }
                                 }
@@ -41,7 +44,7 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user-circle-o mr-2"></i>Hi! Mark</a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user-circle-o mr-2"></i>Hi! @User.Identity.Name</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#"><i class="fa fa-info-circle mr-2"></i> Account</a>
                                 <a class="dropdown-item" href="#"><i class="fa fa-cog mr-2"></i> Settings</a>

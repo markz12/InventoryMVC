@@ -12,17 +12,24 @@
                     <h4>Login</h4>
                 </div>
                 <div class="card-body">
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-dismissible @ViewBag.ClassStatus">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Message: </strong><a href="#" class="alert-link">@ViewBag.Message</a>.
+                        </div>
+                    }
                     <form method="post" action="@Url.Action("Login","Auth")">
                         <div class="form-group">
                             <label>Username</label>
-                            <input class="form-control col" type="text" name="username" id="username" value="" placeholder="Enter username" required/>
+                            <input class="form-control col" type="text" name="username" id="username" value="mark" placeholder="Enter username" required />
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input class="form-control col" type="password" name="password" id="password" value="" placeholder="Enter password" required />
+                            <input class="form-control col" type="password" name="password" id="password" value="12345" placeholder="Enter password" required />
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-success col-12" name="submit" id="btnSubmit"/>
+                            <input type="submit" class="btn btn-success col-12" name="submit" id="btnSubmit" />
                         </div>
                     </form>
                     <div class="card-footer">
