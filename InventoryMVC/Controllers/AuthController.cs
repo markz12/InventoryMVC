@@ -4,21 +4,28 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using InventoryMVC.Class;
+using InventoryMVC.Models;
+using Newtonsoft.Json;
 
 namespace InventoryMVC.Controllers
 {
+    [Authorize]
     public class AuthController : Controller
     {
+        UserAction UserAction = new UserAction();
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Login(FormCollection form)
         {
-            FormsAuthentication.SetAuthCookie("mark", false);
+            var response = JsonConvert.DeserializeObject<IAction<Users>>(UserAction.ValidateUser(form["username"], form["password"]));
             return RedirectToAction("Dashboard","Home");
         }
 
