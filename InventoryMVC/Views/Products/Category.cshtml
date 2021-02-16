@@ -1,4 +1,4 @@
-﻿
+﻿@using InventoryMVC.Models;
 @{
     ViewBag.Title = "Category";
 }
@@ -16,12 +16,17 @@
                                 <div class="card-header">
                                     <h5>Add Category</h5>
                                 </div>
-                                <div class="alert alert-dismissible alert-success">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-                                </div>
+                                @{
+                                    if (TempData["Alert"] != null)
+                                    {
+                                        <div class="alert alert-dismissible @TempData["Alert"]">
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                            <strong>Message: </strong> <a href="#" class="alert-link">@TempData["Message"]</a>.
+                                        </div>
+                                    }
+                                }
                                 <div class="card-body">
-                                    <form>
+                                    <form method="post" action="@Url.Action("Category","Products")">
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <input class="form-control col" type="text" name="category" id="category" value="" placeholder="Enter category" required />
@@ -40,6 +45,15 @@
                                     <h5>Category Details</h5>
                                 </div>
                                 <div class="card-body">
+                                    @{
+                                        if (ViewBag.GetBrandAlert != null & ViewBag.Code != 200)
+                                        {
+                                            <div class="alert alert-dismissible @ViewBag.GetBrandAlert">
+                                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                <strong>Message: </strong>  <a href="#" class="alert-link">@ViewBag.GetBrandMessage</a>.
+                                            </div>
+                                        }
+                                    }
                                     <table id="myCategoryTable" name="myBrandTable" class="table table-hover table-responsive">
                                         <thead>
                                             <tr class="text-center">
@@ -53,29 +67,38 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="table-light">
-                                                <td>
-                                                    <button class="btn btn-info btn-sm">Select</button>
-                                                </td>
-                                                <td>
-                                                    Nestlie
-                                                </td>
-                                                <td>
-                                                    Active
-                                                </td>
-                                                <td>
-                                                    markVanz
-                                                </td>
-                                                <td>
-                                                    Nestlie
-                                                </td>
-                                                <td>
-                                                    09-10-2021
-                                                </td>
-                                                <td>
-                                                    09-10-2021
-                                                </td>
-                                            </tr>
+                                            @{
+
+                                                if (ViewData["categories"] != null)
+                                                {
+                                                    foreach (var item in ViewData["categories"] as IList<categories>)
+                                                    {
+                                                        <tr class="table-light text-center">
+                                                            <td>
+                                                                <button id="@item.categoryid" class="btn btn-info btn-sm">Select</button>
+                                                            </td>
+                                                            <td>
+                                                                @item.name
+                                                            </td>
+                                                            <td>
+                                                                @item.status
+                                                            </td>
+                                                            <td>
+                                                                @item.createdby
+                                                            </td>
+                                                            <td>
+                                                                @item.updatedby
+                                                            </td>
+                                                            <td>
+                                                                @item.datecreated
+                                                            </td>
+                                                            <td>
+                                                                @item.dateupdated
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            }
                                         </tbody>
                                     </table>
                                 </div>

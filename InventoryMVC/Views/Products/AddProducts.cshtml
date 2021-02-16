@@ -1,4 +1,6 @@
-﻿
+﻿@using InventoryMVC.Models
+@using InventoryMVC.Class
+@using System.Threading.Tasks
 @{
     ViewBag.Title = "AddProducts";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,10 +18,15 @@
                             <div class="card-header">
                                 <h4>Add Products</h4>
                             </div>
-                            <div class="alert alert-dismissible alert-success">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-                            </div>
+                            @{
+                                if (ViewBag.Alert != null)
+                                {
+                                    <div class="alert alert-dismissible alert-success">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+                                    </div>
+                                }
+                            }
                             <div class="card-body">
                                 <form>
                                     <div class="row">
@@ -36,8 +43,18 @@
                                             <div class="form-group">
                                                 <label for="category">Category</label>
                                                 <select class="form-control col" id="category">
-                                                    <option>Can Goods</option>
-                                                    <option>Fruits</option>
+                                                    @{ 
+                                                        if (ViewBag.Code == 200)
+                                                        {
+                                                            if (ViewBag["GetCategory"] != null)
+                                                            {
+                                                                foreach (var item in ViewBag["GetCategory"] as IList<categories>)
+                                                                {
+                                                                    <option>@item.name</option>
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 </select>
                                             </div>
                                             <div class="form-group">

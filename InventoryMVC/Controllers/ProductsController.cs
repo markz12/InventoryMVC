@@ -15,9 +15,12 @@ namespace InventoryMVC.Controllers
     {
         ProductAction products = new ProductAction();
         [HttpGet]
-        public ActionResult AddProducts()
+        public async Task<ActionResult> AddProducts()
         {
             TempData["RegisterImage"] = "https://tonsmb.org/wp-content/uploads/2014/03/default-placeholder.png";
+            ResponseAPI<categories> response = await products.GetCategory();
+            ViewBag.Code = response.code;
+            ViewBag["GetCategory"] = response.data;
             return View();
         }
 
@@ -31,6 +34,7 @@ namespace InventoryMVC.Controllers
         public async Task<ActionResult> Brands()
         {
             ResponseAPI<brands> response = await products.GetBrands();
+            ViewBag.Code = response.code;
             ViewBag.GetBrandAlert = DesignClass.AlertDesign(response.code);
             ViewBag.GetBrandMessage = DesignClass.StandardMessage(response.code);
             ViewData["brands"] = response.data;
@@ -41,26 +45,35 @@ namespace InventoryMVC.Controllers
         public async Task<ActionResult> Brands(string brand)
         {
             ReturnData<int> response = await products.AddBrands(brand,User.Identity.Name);
-            ViewBag.AddBrandAlert = DesignClass.AlertDesign(response.code);
-            ViewBag.AddBrandMessage = DesignClass.StandardMessage(response.code);
-            return View();
+            TempData["Alert"] = DesignClass.AlertDesign(response.code);
+            TempData["Message"] = DesignClass.StandardMessage(response.code);
+            return Redirect("Brands");
         }
 
         [HttpGet]
-        public ActionResult Category()
+        public async Task<ActionResult> Category()
         {
+            ResponseAPI<categories> response = await products.GetCategory();
+            ViewBag.Code = response.code;
+            ViewBag.GetBrandAlert = DesignClass.AlertDesign(response.code);
+            ViewBag.GetBrandMessage = DesignClass.StandardMessage(response.code);
+            ViewData["categories"] = response.data;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Category(FormCollection form)
+        public async Task<ActionResult> Category(string category)
         {
-            return View();
+            ReturnData<int> response = await products.AddCategory(category,User.Identity.Name);
+            TempData["Alert"] = DesignClass.AlertDesign(response.code);
+            TempData["Message"] = DesignClass.StandardMessage(response.code);
+            return Redirect("Category");
         }
 
         [HttpGet]
-        public ActionResult Products()
+        public async Task<ActionResult> Products()
         {
+            
             return View();
         }
         

@@ -14,7 +14,7 @@ namespace InventoryMVC.Class
             {
                 return "alert-success";
             }
-            else if (code.Equals(401) || code.Equals(404))
+            else if (code.Equals(401) || code.Equals(404) || code.Equals(409))
             {
                 return "alert-warning";
             }
@@ -62,9 +62,6 @@ namespace InventoryMVC.Class
                     break;
                 case 409:
                     message = "Duplicate";
-                    break;
-                case 500:
-                    message = "Internal Server Error";
                     break;
                 case 0:
                     message = "Query Error";
