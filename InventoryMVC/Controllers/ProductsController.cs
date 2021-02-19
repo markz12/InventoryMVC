@@ -18,9 +18,9 @@ namespace InventoryMVC.Controllers
         public async Task<ActionResult> AddProducts()
         {
             TempData["RegisterImage"] = "https://tonsmb.org/wp-content/uploads/2014/03/default-placeholder.png";
-            ResponseAPI<categories> response = await products.GetCategory();
+            ResponseAPI<brandCategory> response = await products.FetchBrandCategory();
             ViewBag.Code = response.code;
-            ViewBag["GetCategory"] = response.data;
+            ViewData["BrandCategory"] = response.data;
             return View();
         }
 

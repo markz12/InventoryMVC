@@ -56,6 +56,11 @@ namespace InventoryMVC.Models
         public string updatedby { get; set; }
         public DateTime datecreated { get; set; }
         public DateTime dateupdated { get; set; }
+    }
 
+    public class brandCategory
+    {
+        public string Brand { get; set; }
+        public string Category { get; set; }
     }
 }

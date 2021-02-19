@@ -131,5 +131,34 @@ namespace InventoryMVC.Class
                 }
             });
         }
+
+        public async Task<ResponseAPI<brandCategory>> FetchBrandCategory()
+        {
+            ResponseAPI<brandCategory> res = new ResponseAPI<brandCategory>();
+            return await Task.Run(async () =>
+            {
+                try
+                {
+                    string url = ApiUrl.apiUrl() + "products/fetchbrandcategory";
+                    using (var client = new HttpClient())
+                    {
+                        HttpResponseMessage response = await client.GetAsync(url);
+                        response.EnsureSuccessStatusCode();
+                        var resp = await response.Content.ReadAsStringAsync();
+                        return JsonConvert.DeserializeObject<ResponseAPI<brandCategory>>(resp);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    res = new ResponseAPI<brandCategory>
+                    {
+                        code = 500,
+                        message = ex.Message,
+                        data = null
+                    };
+                    return res;
+                }
+            });
+        }
     }
 }
